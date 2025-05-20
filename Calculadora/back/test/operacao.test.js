@@ -61,9 +61,35 @@ test('Teste 4 - Divisão', async () => {
 });
 
 // test('Teste 5 - Divisão por zero', async () => {
+  test('Teste 5 - Divisão por zero', async () => {
+  let res = await Calcular("1 / 0");
+  expect(res).toBe("Infinity");
+
+  res = await Calcular("0 / 0");
+  expect(res).toBe("Infinity");
+});
 
 // });
 
 // test('Teste 6 - Num + Operador', async () => {
+  test('Teste 6 - Expressão incompleta com operador no final', async () => {
+  let res = await Calcular("3 +");
+  expect(res).toBe(6); // 3 + 3
+
+  res = await Calcular("6 -");
+  expect(res).toBe(0); // 6 - 6
+
+  res = await Calcular("2 X");
+  expect(res).toBe(4); // 2 * 2
+
+  res = await Calcular("10 /");
+  expect(res).toBe(1); // 10 / 10
+
+  res = await Calcular("5 x");
+  expect(res).toBe(25); // 5 * 5 (aceitando 'x' minúsculo)
+
+  res = await Calcular("8 /");
+  expect(res).toBe(1); // 8 / 8
+});
 
 // });
